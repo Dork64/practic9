@@ -50,50 +50,30 @@ class _MyHomePage extends State<MyHomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WidgetScreen('Виджет 1')),
+                  MaterialPageRoute(builder: (context) => WidgetColumn('Widget Column')),
                 );
               },
-              child: Text('Виджет 1'),
+              child: Text('Widget Column'),
             ),
             const SizedBox(height: 40,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WidgetScreen('Виджет 2')),
+                  MaterialPageRoute(builder: (context) => ListViewColumn('Widget List-view')),
                 );
               },
-              child: Text('Виджет 2'),
+              child: Text('Widget List-view'),
             ),
             const SizedBox(height: 40,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WidgetScreen('Виджет 3')),
+                  MaterialPageRoute(builder: (context) => ListViewSeparatedColumn('Widget List-view.separated')),
                 );
               },
-              child: Text('Виджет 3'),
-            ),
-            const SizedBox(height: 40,),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => WidgetScreen('Виджет 4')),
-                );
-              },
-              child: Text('Виджет 4'),
-            ),
-            const SizedBox(height: 40,),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => WidgetScreen('Виджет 5')),
-                );
-              },
-              child: Text('Виджет 5'),
+              child: Text('Widget List-view.separated'),
             ),
           ],
         ),
@@ -102,20 +82,214 @@ class _MyHomePage extends State<MyHomePage> {
   }
 }
 
-class WidgetScreen extends StatelessWidget {
+
+class WidgetColumn extends StatefulWidget {
   final String widgetName;
 
-  WidgetScreen(this.widgetName);
+  WidgetColumn(this.widgetName);
+
+  @override
+  _WidgetColumnState createState() => _WidgetColumnState();
+}
+
+class _WidgetColumnState extends State<WidgetColumn> {
+  final items = ['Bitcoin', 'Litecoin', 'Ethereum', 'Dogecoin', 'Tether', 'Solana', 'Monero'];
+  TextEditingController textFieldController = TextEditingController();
+
+  void addItem(String newItem) {
+    setState(() {
+      items.add(newItem);
+    });
+  }
+
+  void deleteItem(String item) {
+    setState(() {
+      items.remove(item);
+    });
+  }
+
+  void showErrorSnackBar(BuildContext context) {
+    const snackBar = SnackBar(
+      content: Text('Ошибка: Достигнуто максимальное количество элементов'),
+      backgroundColor: Colors.red,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widgetName),
+        title: Text(widget.widgetName),
       ),
-      body: Center(
-        child: Text('Вы попали на $widgetName'),
+      body: Column(
+        children: [
+          TextField(
+            controller: textFieldController,
+            decoration: const InputDecoration(labelText: 'Введите элемент'),
+          ),
+          ElevatedButton(
+            child: const Text('Добавить элемент'),
+            onPressed: () {
+              if (items.length < 10) {
+                addItem(textFieldController.text);
+                textFieldController.clear();
+              } else {
+                showErrorSnackBar(context);
+              }
+            },
+          ),
+          Column(
+            children: items.map((item) {
+              return ListTile(
+                title: Text(item),
+                trailing: IconButton(
+                  icon: Icon(Icons.delete),
+                  onPressed: () {
+                    deleteItem(item);
+                  },
+                ),
+              );
+            }).toList(),
+          ),
+        ],
       ),
     );
   }
 }
+
+class ListViewColumn extends StatefulWidget {
+  final String widgetName;
+
+  ListViewColumn(this.widgetName);
+
+  @override
+  _ListViewColumnState createState() => _ListViewColumnState();
+}
+
+class _ListViewColumnState extends State<ListViewColumn> {
+  final items = ['Bitcoin', 'Litecoin', 'Ethereum', 'Dogecoin', 'Tether', 'Solana', 'Monero'];
+
+  TextEditingController textFieldController = TextEditingController();
+
+  void addItem(String newItem) {
+    setState(() {
+      items.add(newItem);
+    });
+  }
+
+  void deleteItem(String item) {
+    setState(() {
+      items.remove(item);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.widgetName),
+      ),
+      body: Column(
+        children: [
+          TextField(
+            controller: textFieldController,
+            decoration: InputDecoration(labelText: 'Введите элемент'),
+          ),
+          ElevatedButton(
+            child: Text('Добавить элемент'),
+            onPressed: () {
+              addItem(textFieldController.text);
+              textFieldController.clear();
+            },
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: items.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(items[index]),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      deleteItem(items[index]);
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ListViewSeparatedColumn extends StatefulWidget {
+  final String widgetName;
+
+  ListViewSeparatedColumn(this.widgetName);
+
+  @override
+  _ListViewSeparatedColumnState createState() => _ListViewSeparatedColumnState();
+}
+
+class _ListViewSeparatedColumnState extends State<ListViewSeparatedColumn> {
+  final items = ['Bitcoin', 'Litecoin', 'Ethereum', 'Dogecoin', 'Tether', 'Solana', 'Monero'];
+
+  TextEditingController textFieldController = TextEditingController();
+
+  void addItem(String newItem) {
+    setState(() {
+      items.add(newItem);
+    });
+  }
+
+  void deleteItem(String item) {
+    setState(() {
+      items.remove(item);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.widgetName),
+      ),
+      body: Column(
+        children: [
+          TextField(
+            controller: textFieldController,
+            decoration: InputDecoration(labelText: 'Введите элемент'),
+          ),
+          ElevatedButton(
+            child: Text('Добавить элемент'),
+            onPressed: () {
+              addItem(textFieldController.text);
+              textFieldController.clear();
+            },
+          ),
+          Expanded(
+            child: ListView.separated(
+              itemCount: items.length,
+              separatorBuilder: (context, index) => Divider(),
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(items[index]),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete),
+                    onPressed: () {
+                      deleteItem(items[index]);
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
