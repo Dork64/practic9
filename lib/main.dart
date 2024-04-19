@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-
+import 'routing.dart';
 
 void main() {
   runApp(const MyApp());
@@ -50,30 +49,410 @@ class _MyHomePage extends State<MyHomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WidgetColumn('Widget Column')),
+                  MaterialPageRoute(builder: (context) => const FirstScreen()),
                 );
               },
-              child: Text('Widget Column'),
+              child: Text('First Screen'),
             ),
             const SizedBox(height: 40,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ListViewColumn('Widget List-view')),
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
                 );
               },
-              child: Text('Widget List-view'),
+              child: Text('Second Screen'),
             ),
             const SizedBox(height: 40,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ListViewSeparatedColumn('Widget List-view.separated')),
+                  MaterialPageRoute(builder: (context) => const ThirdScreen()),
                 );
               },
-              child: Text('Widget List-view.separated'),
+              child: Text('Third Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FourthScreen()),
+                );
+              },
+              child: Text('Fourth Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FifthScreen()),
+                );
+              },
+              child: Text('Fifth Screen'),
+            ),
+            const SizedBox(height: 120,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+              child: Text('Перейти к другой реализации'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FirstScreen extends StatelessWidget {
+  const FirstScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'First Screen',
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                );
+              },
+              child: const Text('Second Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThirdScreen()),
+                );
+              },
+              child: const Text('Third Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FourthScreen()),
+                );
+              },
+              child: const Text('Fourth Screen'),
+            ),
+            const SizedBox(height: 80,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FifthScreen()),
+                );
+              },
+              child: const Text('Fifth Screen'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Second Screen',
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FirstScreen()),
+                );
+              },
+              child: const Text('First Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThirdScreen()),
+                );
+              },
+              child: const Text('Third Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FourthScreen()),
+                );
+              },
+              child: const Text('Fourth Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FifthScreen()),
+                );
+              },
+              child: const Text('Fifth Screen'),
+            ),
+            const SizedBox(height: 80,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                );
+              },
+              child: const Text('Home Page'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class ThirdScreen extends StatelessWidget {
+  const ThirdScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Third Screen',
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FirstScreen()),
+                );
+              },
+              child: const Text('First Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                );
+              },
+              child: const Text('Second Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FourthScreen()),
+                );
+              },
+              child: const Text('Fourth Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FifthScreen()),
+                );
+              },
+              child: const Text('Fifth Screen'),
+            ),
+            const SizedBox(height: 80,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                );
+              },
+              child: const Text('Home Page'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FourthScreen extends StatelessWidget {
+  const FourthScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Fourth Screen',
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FirstScreen()),
+                );
+              },
+              child: const Text('First Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                );
+              },
+              child: const Text('Second Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThirdScreen()),
+                );
+              },
+              child: const Text('Third Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FifthScreen()),
+                );
+              },
+              child: const Text('Fifth Screen'),
+            ),
+            const SizedBox(height: 80,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                );
+              },
+              child: const Text('Home Page'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FifthScreen extends StatelessWidget {
+  const FifthScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Fifth Screen',
+        ),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FirstScreen()),
+                );
+              },
+              child: const Text('First Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                );
+              },
+              child: const Text('Second Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ThirdScreen()),
+                );
+              },
+              child: const Text('Third Screen'),
+            ),
+            const SizedBox(height: 40,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FourthScreen()),
+                );
+              },
+              child: const Text('Fourth Screen'),
+            ),
+            const SizedBox(height: 80,),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyApp()),
+                );
+              },
+              child: const Text('Home Page'),
             ),
           ],
         ),
@@ -83,213 +462,4 @@ class _MyHomePage extends State<MyHomePage> {
 }
 
 
-class WidgetColumn extends StatefulWidget {
-  final String widgetName;
-
-  WidgetColumn(this.widgetName);
-
-  @override
-  _WidgetColumnState createState() => _WidgetColumnState();
-}
-
-class _WidgetColumnState extends State<WidgetColumn> {
-  final items = ['Bitcoin', 'Litecoin', 'Ethereum', 'Dogecoin', 'Tether', 'Solana', 'Monero'];
-  TextEditingController textFieldController = TextEditingController();
-
-  void addItem(String newItem) {
-    setState(() {
-      items.add(newItem);
-    });
-  }
-
-  void deleteItem(String item) {
-    setState(() {
-      items.remove(item);
-    });
-  }
-
-  void showErrorSnackBar(BuildContext context) {
-    const snackBar = SnackBar(
-      content: Text('Ошибка: Достигнуто максимальное количество элементов'),
-      backgroundColor: Colors.red,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.widgetName),
-      ),
-      body: Column(
-        children: [
-          TextField(
-            controller: textFieldController,
-            decoration: const InputDecoration(labelText: 'Введите элемент'),
-          ),
-          ElevatedButton(
-            child: const Text('Добавить элемент'),
-            onPressed: () {
-              if (items.length < 10) {
-                addItem(textFieldController.text);
-                textFieldController.clear();
-              } else {
-                showErrorSnackBar(context);
-              }
-            },
-          ),
-          Column(
-            children: items.map((item) {
-              return ListTile(
-                title: Text(item),
-                trailing: IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () {
-                    deleteItem(item);
-                  },
-                ),
-              );
-            }).toList(),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ListViewColumn extends StatefulWidget {
-  final String widgetName;
-
-  ListViewColumn(this.widgetName);
-
-  @override
-  _ListViewColumnState createState() => _ListViewColumnState();
-}
-
-class _ListViewColumnState extends State<ListViewColumn> {
-  final items = ['Bitcoin', 'Litecoin', 'Ethereum', 'Dogecoin', 'Tether', 'Solana', 'Monero'];
-
-  TextEditingController textFieldController = TextEditingController();
-
-  void addItem(String newItem) {
-    setState(() {
-      items.add(newItem);
-    });
-  }
-
-  void deleteItem(String item) {
-    setState(() {
-      items.remove(item);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.widgetName),
-      ),
-      body: Column(
-        children: [
-          TextField(
-            controller: textFieldController,
-            decoration: InputDecoration(labelText: 'Введите элемент'),
-          ),
-          ElevatedButton(
-            child: Text('Добавить элемент'),
-            onPressed: () {
-              addItem(textFieldController.text);
-              textFieldController.clear();
-            },
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(items[index]),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      deleteItem(items[index]);
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class ListViewSeparatedColumn extends StatefulWidget {
-  final String widgetName;
-
-  ListViewSeparatedColumn(this.widgetName);
-
-  @override
-  _ListViewSeparatedColumnState createState() => _ListViewSeparatedColumnState();
-}
-
-class _ListViewSeparatedColumnState extends State<ListViewSeparatedColumn> {
-  final items = ['Bitcoin', 'Litecoin', 'Ethereum', 'Dogecoin', 'Tether', 'Solana', 'Monero'];
-
-  TextEditingController textFieldController = TextEditingController();
-
-  void addItem(String newItem) {
-    setState(() {
-      items.add(newItem);
-    });
-  }
-
-  void deleteItem(String item) {
-    setState(() {
-      items.remove(item);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.widgetName),
-      ),
-      body: Column(
-        children: [
-          TextField(
-            controller: textFieldController,
-            decoration: InputDecoration(labelText: 'Введите элемент'),
-          ),
-          ElevatedButton(
-            child: Text('Добавить элемент'),
-            onPressed: () {
-              addItem(textFieldController.text);
-              textFieldController.clear();
-            },
-          ),
-          Expanded(
-            child: ListView.separated(
-              itemCount: items.length,
-              separatorBuilder: (context, index) => Divider(),
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(items[index]),
-                  trailing: IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () {
-                      deleteItem(items[index]);
-                    },
-                  ),
-                );
-              },
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
 
