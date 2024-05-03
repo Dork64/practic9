@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'routing.dart';
 
@@ -97,10 +98,7 @@ class _MyHomePage extends State<MyHomePage> {
             const SizedBox(height: 120,),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
-                );
+                goToAnotherImplementation(context);
               },
               child: Text('Перейти к другой реализации'),
             ),
@@ -460,6 +458,17 @@ class FifthScreen extends StatelessWidget {
     );
   }
 }
+
+Future<void> goToAnotherImplementation(BuildContext context) {
+  return Future.delayed(Duration(seconds: 4)).then((_) {
+    // Переход к другой реализации
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomeScreen()),
+    );
+  });
+}
+
 
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 void main() {
   runApp(HomeScreen());
@@ -72,10 +73,38 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class HomeContent extends StatelessWidget {
+  Future<String> fetchData() async {
+    await Future.delayed(Duration(seconds: 7));
+    return 'Данные загружены';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Home Screen'),
+      child: ElevatedButton(
+        onPressed: () async {
+          String data = await fetchData();
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+
+              return AlertDialog(
+                title: Text('Загрузка данных'),
+                content: Text(data),
+                actions: <Widget>[
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('Закрыть'),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+        child: Text('Загрузить данные'),
+      ),
     );
   }
 }
@@ -83,34 +112,69 @@ class HomeContent extends StatelessWidget {
 class ListScreen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('List Screen 1'));
+    return Center(
+      child: CachedNetworkImage(
+        imageUrl: "https://i.postimg.cc/4Ngfj4rq/1628777678-2-p-kotenok-1-mesyats-foto-2.jpg",
+        progressIndicatorBuilder: (context, url, downloadProgress) =>
+            CircularProgressIndicator(value: downloadProgress.progress),
+        errorWidget: (context, url, error) => Icon(Icons.error),
+      ),
+    );
   }
 }
 
 class ListScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('List Screen 2'));
+    return Center(
+      child: CachedNetworkImage(
+        imageUrl: "https://i.postimg.cc/d1CFSgnJ/e4f6e5u-960.jpg",
+        progressIndicatorBuilder: (context, url, downloadProgress) =>
+            CircularProgressIndicator(value: downloadProgress.progress),
+        errorWidget: (context, url, error) => Icon(Icons.error),
+      ),
+    );
   }
 }
 
 class ListScreen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('List Screen 3'));
+    return Center(
+      child: CachedNetworkImage(
+        imageUrl: "https://i.postimg.cc/ZqBzCXG6/1628690500-51-p-kotenok-1-mesyats-foto-kak-viglyadit-54.jpg",
+        progressIndicatorBuilder: (context, url, downloadProgress) =>
+            CircularProgressIndicator(value: downloadProgress.progress),
+        errorWidget: (context, url, error) => Icon(Icons.error),
+      ),
+    );
   }
 }
 
 class ListScreen4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('List Screen 4'));
+    return Center(
+      child: CachedNetworkImage(
+        imageUrl: "https://i.postimg.cc/QCjzkzy4/1-kotik-1024x682.jpg",
+        progressIndicatorBuilder: (context, url, downloadProgress) =>
+            CircularProgressIndicator(value: downloadProgress.progress),
+        errorWidget: (context, url, error) => Icon(Icons.error),
+      ),
+    );
   }
 }
 
 class ListScreen5 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('List Screen 5'));
+    return Center(
+      child: CachedNetworkImage(
+        imageUrl: "https://i.postimg.cc/jdg1PZQc/ff35937abc69ac41a71fb51eab7ba219.jpg",
+        progressIndicatorBuilder: (context, url, downloadProgress) =>
+            CircularProgressIndicator(value: downloadProgress.progress),
+        errorWidget: (context, url, error) => Icon(Icons.error),
+      ),
+    );
   }
 }
