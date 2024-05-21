@@ -1,8 +1,22 @@
-
 import 'package:flutter/material.dart';
 import 'routing.dart';
+import 'MyInheritedWidget.dart';
+import 'package:get_it/get_it.dart';
+
+
+class ScreenData {
+  String screenNumber;
+  ScreenData(this.screenNumber);
+}
+
+GetIt getIt = GetIt.instance;
+
+void setupGetIt() {
+  GetIt.I.registerSingleton<ScreenData>(ScreenData('Message'));
+}
 
 void main() {
+  setupGetIt();
   runApp(const MyApp());
 }
 
@@ -11,24 +25,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Мое приложение',
-      theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.grey[900],
-        appBarTheme: AppBarTheme(
-          backgroundColor: Colors.grey[800],
+    return MyInheritedWidget(
+      child: MaterialApp(
+        title: 'Мое приложение',
+        theme: ThemeData(
+          primarySwatch: Colors.deepPurple,
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Colors.grey[900],
+          appBarTheme: AppBarTheme(
+            backgroundColor: Colors.grey[800],
+          ),
         ),
+        home: const MyHomePage(title: 'Мое приложение'),
       ),
-      home: const MyHomePage(title: 'Мое приложение'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   final String title;
-
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   @override
@@ -36,6 +51,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePage extends State<MyHomePage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +76,7 @@ class _MyHomePage extends State<MyHomePage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                  MaterialPageRoute(builder: (context) => SecondScreen()),
                 );
               },
               child: Text('Second Screen'),
@@ -117,8 +133,8 @@ class FirstScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text(
-          'First Screen',
+        title: Text(
+          MyInheritedWidget.of(context).message1,
         ),
       ),
       body: Center(
@@ -129,10 +145,10 @@ class FirstScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                  MaterialPageRoute(builder: (context) => SecondScreen()),
                 );
               },
-              child: const Text('Second Screen'),
+              child: Text(MyInheritedWidget.of(context).message2),
             ),
             const SizedBox(height: 40,),
             ElevatedButton(
@@ -142,7 +158,7 @@ class FirstScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const ThirdScreen()),
                 );
               },
-              child: const Text('Third Screen'),
+              child: Text(MyInheritedWidget.of(context).message3),
             ),
             const SizedBox(height: 40,),
             ElevatedButton(
@@ -152,7 +168,7 @@ class FirstScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const FourthScreen()),
                 );
               },
-              child: const Text('Fourth Screen'),
+              child: Text(MyInheritedWidget.of(context).message4),
             ),
             const SizedBox(height: 80,),
             ElevatedButton(
@@ -162,7 +178,7 @@ class FirstScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const FifthScreen()),
                 );
               },
-              child: const Text('Fifth Screen'),
+              child: Text(MyInheritedWidget.of(context).message5),
             ),
           ],
         ),
@@ -172,7 +188,7 @@ class FirstScreen extends StatelessWidget {
 }
 
 class SecondScreen extends StatelessWidget {
-  const SecondScreen({Key? key}) : super(key: key);
+  SecondScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -194,7 +210,7 @@ class SecondScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const FirstScreen()),
                 );
               },
-              child: const Text('First Screen'),
+              child: Text('First Screen'),
             ),
             const SizedBox(height: 40,),
             ElevatedButton(
@@ -236,6 +252,9 @@ class SecondScreen extends StatelessWidget {
               },
               child: const Text('Home Page'),
             ),
+            const SizedBox(height: 80,),
+            Text(getIt.get<ScreenData>().screenNumber)
+            , // Text
           ],
         ),
       ),
@@ -273,7 +292,7 @@ class ThirdScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                  MaterialPageRoute(builder: (context) => SecondScreen()),
                 );
               },
               child: const Text('Second Screen'),
@@ -345,7 +364,7 @@ class FourthScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                  MaterialPageRoute(builder: (context) => SecondScreen()),
                 );
               },
               child: const Text('Second Screen'),
@@ -417,7 +436,7 @@ class FifthScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const SecondScreen()),
+                  MaterialPageRoute(builder: (context) => SecondScreen()),
                 );
               },
               child: const Text('Second Screen'),
